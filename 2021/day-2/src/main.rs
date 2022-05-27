@@ -1,4 +1,5 @@
 /*
+ * Default::default() is pretty sweet
  * second prob was just a refinement of the first
  **/
 
