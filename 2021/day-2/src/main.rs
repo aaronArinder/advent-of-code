@@ -1,9 +1,13 @@
+/*
+ * second prob was just a refinement of the first
+ **/
+
 use regex::Regex;
 use std::fs;
 
 fn main() {
-    let first_sol = first_problem();
-    println!("first sol: {}", first_sol)
+    let sol = problem();
+    println!("sol: {}", sol)
 }
 
 fn get_input() -> String {
@@ -14,19 +18,21 @@ fn get_input() -> String {
 struct Position {
     depth: i32,
     forward: i32,
+    aim: i32,
 }
 
 impl Position {
     fn up(&mut self, value: i32) {
-        self.depth -= value;
+        self.aim -= value;
     }
 
     fn down(&mut self, value: i32) {
-        self.depth += value;
+        self.aim += value;
     }
 
     fn forward(&mut self, value: i32) {
         self.forward += value;
+        self.depth += self.aim * value;
     }
 }
 
@@ -35,7 +41,7 @@ fn get_value(line: &str) -> i32 {
     let value: i32 = split[1].parse().unwrap();
     value
 }
-fn first_problem() -> i32 {
+fn problem() -> i32 {
     let forward_re = Regex::new(r"forward ").unwrap();
     let up_re = Regex::new(r"up ").unwrap();
     let down_re = Regex::new(r"down ").unwrap();
