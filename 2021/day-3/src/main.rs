@@ -8,8 +8,8 @@ fn main() {
     println!("first sol: {:?}", first_sol)
 }
 
-fn first_problem() -> u32 {
-    let (total_rows, summed_columns) = get_input()
+fn get_total_rows_and_summed_columns(input: String) -> (usize, Vec<u32>) {
+    input
         .lines()
         .map(|line| {
             line.split("")
@@ -29,8 +29,12 @@ fn first_problem() -> u32 {
 
             (idx, summed_vecs)
         })
-        .unwrap();
+        .unwrap()
+}
 
+fn first_problem() -> u32 {
+    let input = get_input();
+    let (total_rows, summed_columns) = get_total_rows_and_summed_columns(input);
     let total_rows: u32 = total_rows.try_into().unwrap();
 
     let (gamma, epsilon) = summed_columns
