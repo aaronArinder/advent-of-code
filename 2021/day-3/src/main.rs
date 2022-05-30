@@ -50,11 +50,14 @@ fn first_problem() -> u32 {
             acc
         });
 
+    let gamma = gamma.join("");
+    let epsilon = epsilon.join("");
+
     bin_to_dec(gamma) * bin_to_dec(epsilon)
 }
 
-fn bin_to_dec(string: Vec<&str>) -> u32 {
-    u32::from_str_radix(&string.join(""), 2).unwrap()
+fn bin_to_dec(string: String) -> u32 {
+    u32::from_str_radix(&string, 2).unwrap()
 }
 
 // TODO modularize for 2021
